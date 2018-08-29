@@ -12,9 +12,9 @@ model server and use it in a production scenario.
 
 3) Send requests and get responses ( Try a simple integration with Django Web Application Framework)
 
-#### 1. Creating a simple model
+#### 1. Creating a LSTM model
 
-`simple_model.py` covers a basic model - which can either add, subtract or 
+`LSTM_Model_test.py` covers a basic model - which can either add, subtract or 
 multiply. The model is very primitive in nature, however, its the same basic
 fundamental for more complex models.
 
