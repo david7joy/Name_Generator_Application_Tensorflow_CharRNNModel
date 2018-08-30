@@ -107,6 +107,31 @@ Once this is done we can integrate this response with another application using 
 
 Note : added `grpcio` to conda using `conda install grpcio`.
 
+Model Training : 
+
+Output : 
+`WARNING:tensorflow:From /Users/davidjoy/Desktop/pycharm/Char_rnn_project/LSTM_Model_test.py:71: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+
+Future major versions of TensorFlow will allow gradients to flow
+into the labels input on backprop by default.
+
+See @{tf.nn.softmax_cross_entropy_with_logits_v2}.
+
+2018-08-29 15:43:01.601269: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+Iter= 2001, Average Loss= 0.796811, Average Accuracy= 75.29%
+Iter= 4001, Average Loss= 0.236399, Average Accuracy= 90.90%
+Iter= 6001, Average Loss= 0.222687, Average Accuracy= 91.27%
+Iter= 8001, Average Loss= 0.217329, Average Accuracy= 91.45%
+Iter= 10001, Average Loss= 0.214098, Average Accuracy= 91.51%
+Iter= 12001, Average Loss= 0.212658, Average Accuracy= 91.51%
+Iter= 14001, Average Loss= 0.211830, Average Accuracy= 91.54%
+Iter= 16001, Average Loss= 0.211341, Average Accuracy= 91.56%
+Iter= 18001, Average Loss= 0.210890, Average Accuracy= 91.60%
+Iter= 20001, Average Loss= 0.210099, Average Accuracy= 91.58%
+
+Process finished with exit code 0`
+
 Sources: 
 
 https://medium.com/epigramai/tensorflow-serving-101-pt-1-a79726f7c103
