@@ -20,16 +20,17 @@ def result(name):
                   12: 'l', 13: 'm', 14: 'n', 15: 'o',
                   16: 'p', 17: 'q', 18: 'r', 19: 's', 20: 't', 21: 'u', 22: 'v', 23: 'w', 24: 'x', 25: 'y', 26: 'z'}
 
+    timesteps = 7
     srch = name
     # enter = input('Enter 3 letters :')
     letters = srch.strip()
-    letters = list(letters)
+    letters = list(letters)[-7:]
     letters = [char_to_ix[i] for i in letters]
 
 
-    for i in range(20):
-        fixing_shape = np.float32(np.zeros((512, 3, 1)))
-        cell_input = np.reshape(np.array(letters), [-1, 3, 1])
+    for i in range(30):
+        fixing_shape = np.float32(np.zeros((512, timesteps, 1)))
+        cell_input = np.reshape(np.array(letters), [-1, timesteps, 1])
         x = np.float32(cell_input + fixing_shape)
         request.inputs['x_input'].CopyFrom(
             make_tensor_proto(x))
@@ -39,16 +40,18 @@ def result(name):
         location = int(np.argmax(values, axis=1))
         letters.append(location)
         srch += '%s' % (ix_to_char[location])
-        letters = letters[-3:]
+        letters = letters[-timesteps:]
 
     return srch
 
 def test(request):
     if request.method=='POST':
         srch = request.POST['srh']
-        value = result(srch)
+        timesteps = list(srch)[-7:]
+        value = result(srch).replace(' ',' , ')
 
-        return render(request, 'char_rnn_test_app/test.html', {'value': value})
+
+        return render(request, 'char_rnn_test_app/test.html', {'value': value,'timesteps':timesteps,'input':srch})
 
     return render(request, 'char_rnn_test_app/test.html')
 

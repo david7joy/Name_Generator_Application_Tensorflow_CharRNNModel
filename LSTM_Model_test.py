@@ -31,10 +31,10 @@ ix_to_char = {i: ch for i, ch in enumerate(sorted(chars))}
 n_hidden = 256
 
 # hyperparameters
-learning_rate = .001
-training_iters = 1
-display_step = 1
-time_steps = 3
+learning_rate = .005
+training_iters = 20000
+display_step = 2000
+time_steps = 7
 num_input = 1
 batch_size = 512
 
@@ -52,9 +52,9 @@ biases = {'out': tf.Variable(tf.random_normal([vocab_size]), name='biases')}
 def RNN(x, weights, biases):
     x = tf.reshape(x, [-1, time_steps])
     x = tf.split(x, time_steps, 1)
-    rnn_cell = rnn.BasicLSTMCell(n_hidden)
-    #rnn_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(n_hidden), rnn.BasicLSTMCell(n_hidden)])
-    #rnn_cell = rnn.DropoutWrapper(rnn_cell, output_keep_prob=0.8)
+    #rnn_cell = rnn.BasicLSTMCell(n_hidden)
+    rnn_cell = rnn.MultiRNNCell([rnn.BasicLSTMCell(n_hidden), rnn.BasicLSTMCell(n_hidden)])
+    rnn_cell = rnn.DropoutWrapper(rnn_cell, output_keep_prob=0.8)
     outputs, states = rnn.static_rnn(rnn_cell, x, dtype=tf.float32)
     with tf.name_scope('output_layer'):
         logit = tf.add(tf.matmul(outputs[-1], weights['out']), biases['out'], name='add')
@@ -116,7 +116,6 @@ with tf.Session() as sess:
         # print(r1,r2,steps)
         X = [char_to_ix[str(training_data[i])] for i in range(r1, r2)]
         X = np.reshape(np.array(X), [batch_size, time_steps, 1])
-        print('X {}'.format(X.shape))
         batch_size = X.shape[0]
         r1 = r2
         r2 = r2 + (batch_size * time_steps)

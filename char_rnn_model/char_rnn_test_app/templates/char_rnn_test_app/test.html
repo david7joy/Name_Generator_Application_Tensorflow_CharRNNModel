@@ -4,21 +4,24 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 <head>
     <meta charset="UTF-8">
-    <title>Tensorflow model</title>
+    <title>Machine Learning Application</title>
 </head>
 <body>
 <div style="color:black" class="container"><br>
-    <b>Name Generator Application</b><br>
-<form method="post" action="/test/">
+    <b>Dino Name Generation App</b>
+<form method="post" action="/test/"><br>
     <form class="form-group">
 	{% csrf_token %}
 	<div class="input-group">
-	    <input type="text" name="srh" class="form-control form-control-sm col-sm-3" placeholder="Enter first 3 letters">
+	    <input type="text" name="srh" class="form-control form-control-sm col-sm-3" placeholder="Enter characters to predict">
         <button type="submit" class="btn btn-info">Enter</button>
 	</div>
     </form>
 </form>
-    <a>Predicted Name : {{value}}</a>
+    <br>
+    <a style="color:darksalmon">Actual Characters entered by user : {{input}}</a><br>
+    <a style="color:darksalmon">Characters used for prediction : {{timesteps}}</a><br>
+    <a style="color:darksalmon">Predicted Name : {{value}}</a>
 </div>
 </body>
 </html>
