@@ -109,8 +109,7 @@ Note : added `grpcio` to conda using `conda install grpcio`.
 
 Model Training : 
 
-Output : 
-`WARNING:tensorflow:From /Users/davidjoy/Desktop/pycharm/Char_rnn_project/LSTM_Model_test.py:71: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
+Output : `WARNING:tensorflow:From /Users/davidjoy/Desktop/pycharm/Char_rnn_project/LSTM_Model_test.py:71: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.
 Instructions for updating:
 
 Future major versions of TensorFlow will allow gradients to flow
